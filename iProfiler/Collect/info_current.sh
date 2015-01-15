@@ -20,6 +20,10 @@ do
 	#gpustat
 	date >> /sdcard/gpustat.log
 	cat /sys/class/kgsl/kgsl-3d0/gpubusy >> /sdcard/gpustat.log
-			
+	
+	#procrank
+	date >> /sdcard/procrank.log
+	procrank >> proc_rank.log
+	
 	sleep 30
 done
