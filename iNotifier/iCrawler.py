@@ -14,7 +14,7 @@ class iCrawler :
         pass
 
     def crawledData(self) :
-        #ex) read one from cmd( or file)
+        #ex) read data from cmd( or file)
 
         output = subprocess.Popen('dir', shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT).stdout.read()
             
