@@ -1,64 +1,58 @@
 # This is workqueue(FIFO)
 # using Producer/Consumer pattern
 import threading
-
+            
 class iWorkQ :
     
     pool = ''
     POOL_MAX = 10
     
-    def __init__(self, LinkedList) :
-        pool = LinkedList
-        self.mutex = thread.Lock()
+    def __init__(self, queue) :
+        self.pool = queue
+        self.mutex = threading.Lock()
         self.condition = threading.Condition(self.mutex)
     
     def enqueue(self, obj) :
-        global POOL_MAX
-        global pool
+        #global POOL_MAX
+        #global pool
+
+        self.condition.acquire()
+        while (self.size() >= self.POOL_MAX) :
+            print 'wait enqueue....\n'
+            self.condition.wait()       
         
-        while (self.size() >= POOL_MAX) :
-            try :
-                print "wait enqueue...."
-                self.condition.wait()
-            except InterruptedException, msg:
-                print 'InterruptedException : ', msg
-            else :
-                pass
-        
-        
-        pool.append(obj)
+        self.pool.append(obj)
         
         if (self.size() > 0) :
-            print "notify enqueue...."
+            print 'notify enqueue....\n'
             self.condition.notifyAll()
-    
+        self.condition.release()
+        
     def dequeue(self) :
-        global POOL_MAX
-        global pool
-        
+        #global POOL_MAX
+        #global pool
+
+        self.condition.acquire()
         while (self.size() == 0) :
-            try :
-                print "wait dequeue...."
-                self.condition.wait()
-            except InterruptedException, msg :
-                
-                print 'InterruptedException : ', msg
-            else :
-                pass
+            print 'wait dequeue....\n'
+            self.condition.wait()
+
         
-        obj = pool.pop(0)
-        if (self.size() < POOL_MAX) :
-            print "notify dequeue...."
+        obj = self.pool.pop(0)
+        if (self.size() < self.POOL_MAX) :
+            print 'notify dequeue....\n'
             self.condition.notifyAll()
+        self.condition.release()
         
         return obj
     
     def size(self) :
-        return pool.count()
+        return len(self.pool)
     
     def isEmpty(self) :
         if (self.size() == 0) :
             return True
         
         return False
+
 
