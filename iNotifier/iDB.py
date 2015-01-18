@@ -1,3 +1,5 @@
+# Singleton
+
 class iDB :
 
     def __init__(self) :        
@@ -119,5 +121,3 @@ class iDB :
 
     def dispItemsList(self) :
         print self.Items_array
-        
-
