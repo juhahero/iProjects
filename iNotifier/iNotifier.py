@@ -2,15 +2,17 @@ from iWorkQ import *
 from Producer import *
 from Consumer import *
 from iCrawler import *
+from iWorker import *
 
 #main()******************************************
 def main() :
     list = []
     pool = iWorkQ(list)
     crawl = iCrawler()
+    worker = ''
     
     producer = Producer(pool, crawl)
-    consumer = Consumer(pool)
+    consumer = Consumer(pool, worker)
 
     producer.start()
     consumer.start()

@@ -81,7 +81,7 @@ class iParser :
 '''
 def main() :
     idb = iDB()
-    iparser = iParser(idb, 1);
+    iparser = iParser(idb, 1)
 
     str = """
 Sat Jan 31 19:30:02 GMT 1970
