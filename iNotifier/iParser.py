@@ -75,7 +75,7 @@ class iParser :
 
                 #print info_item
             else:
-                print 'pass'
+                pass
            
         self.db.insertItems(self.time, self.db.Item_list)
 '''

@@ -8,15 +8,20 @@ from iParser import *
 
 class iWorker(threading.Thread) :
     def __init__(self, type, obj) :
+        threading.Thread.__init__(self)
         self.db = iDB()
         self.parser = iParser(self.db, type)
         self.job = obj
 
-    def run() :
-        self.parser.parse(slef.obj)
-        print self.db.getAllitemList()
+    def run(self) :
+        self.parser.parse(self.job)
+        print self.db.getAllItemList()
         time.sleep(1)
 
+    def setJob(self, obj) :
+        self.job = obj
+        
+'''
 def test() :
     str = """
 Sat Jan 31 19:30:02 GMT 1970
@@ -49,3 +54,4 @@ CPU usage from 116890ms to 56891ms ago with 99% awake:
     iwork.join()
 
 test()
+'''

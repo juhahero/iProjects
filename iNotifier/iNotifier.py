@@ -9,7 +9,7 @@ def main() :
     list = []
     pool = iWorkQ(list)
     crawl = iCrawler()
-    worker = ''
+    worker = iWorker(1, '')
     
     producer = Producer(pool, crawl)
     consumer = Consumer(pool, worker)
