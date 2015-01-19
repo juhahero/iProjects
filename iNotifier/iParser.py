@@ -56,7 +56,7 @@ class iParser :
         data = obj
         for data in obj.splitlines() :
             rs_data = data.rstrip()
-            print rs_data
+            #print rs_data
             if bool(re.match(self.patt_start, rs_data)):
                 print rs_data       
                               

@@ -6,13 +6,18 @@ import time
 from iDB import *
 from iParser import *
 
-class iWorker(threading.Thread) :
+class iWorker :
     def __init__(self, type, obj) :
-        threading.Thread.__init__(self)
+        #threading.Thread.__init__(self)
         self.db = iDB()
         self.parser = iParser(self.db, type)
         self.job = obj
 
+    def runJob(self, obj) :
+        self.parser.parse(job)
+        print self.db.Items_array.items()
+        time.sleep(1)
+'''
     def run(self) :
         self.parser.parse(self.job)
         print self.db.getAllItemList()
@@ -20,7 +25,7 @@ class iWorker(threading.Thread) :
 
     def setJob(self, obj) :
         self.job = obj
-        
+'''   
 '''
 def test() :
     str = """
