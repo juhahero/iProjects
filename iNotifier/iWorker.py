@@ -13,7 +13,7 @@ class iWorker :
         self.parser = iParser(self.db, type)
         self.job = obj
 
-    def runJob(self, obj) :
+    def runJob(self, job) :
         self.parser.parse(job)
         print self.db.Items_array.items()
         time.sleep(1)
