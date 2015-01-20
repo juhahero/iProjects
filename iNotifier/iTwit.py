@@ -26,6 +26,11 @@ class iTwit :
 
 '''
 def test() :
-    itwit = iTwit('doradoli')
+    try :
+        itwit = iTwit('doradoli')
+        itwit.sendDM('hello twitter')
+    except TweepError as e :
+        print "Exception : %s" % e.args[0]
+        
 test()    
 '''

@@ -9,31 +9,35 @@ from iMonitor import *
 from iTwit import *
 
 class iWorker :
-    def __init__(self, type, obj) :
+    def __init__(self, type, obj, threshold) :
         #threading.Thread.__init__(self)
         self.db = iDB()
         self.parser = iParser(self.db, type)
-        self.monitor = iMonitor(100)
+        self.monitor = iMonitor(threshold)
         self.twit = iTwit('doradoli')
         self.job = obj
+        self.threshold = threshold
 
     def runJob(self, job) :
         self.parser.parse(job)
         print self.db.Item_list.items()
-        bCheck = self.monitor.checkThreshold(self.db.Item_list.items(), 0.2)
-        if (bCheck) :
-            self.twit.sendDM('cpu overheat')
+        sCheck = self.monitor.checkThreshold(self.db.Item_list.items())
+        if (sCheck) :
+            try :
+                self.twit.sendDM(sCheck)
+            except TweepError as e :
+                print "Exception : %s" % e.args[0]
         else :
-            self.twit.sendDM('NOT cpu overheat')
-            
+            #self.twit.sendDM('NOT cpu overheat')
+            pass            
         time.sleep(1)
- '''
+'''
 def test() :
     str = """
 Sat Jan 31 19:30:02 GMT 1970
 Load: 13.26 / 13.47 / 11.88
 CPU usage from 116890ms to 56891ms ago with 99% awake:
-  0.2% 1023/system_server: 0.1% user + 0% kernel / faults: 35 minor
+  96% 1023/system_server: 0.1% user + 0% kernel / faults: 35 minor
   0.1% 336/atd: 0% user + 0.1% kernel
   0.1% 1254/com.android.systemui: 0.1% user + 0% kernel / faults: 1 minor
   0.1% 2238/mpdecision: 0% user + 0.1% kernel

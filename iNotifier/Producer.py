@@ -16,4 +16,4 @@ class Producer(threading.Thread) :
             print "Producer : enqueue obj = %s\n" %obj
             self.pool.enqueue(obj)                
             
-            time.sleep(1)
+            time.sleep(10)
