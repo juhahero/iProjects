@@ -11,8 +11,8 @@ from Work import *
 class iWorkerThread(threading.Thread) :
     def __init__(self, name, wq) :
         threading.Thread.__init__(self)
-        self.WAITING = 0;
-        self.RUNNING = 1;
+        self.WAITING = 0
+        self.RUNNING = 1
 
         self.name = name
         self.work = ''
@@ -21,7 +21,7 @@ class iWorkerThread(threading.Thread) :
         #self.wq = WorkQueue.getInstance()
         self.wq = wq
         
-    def getServerName(self) :
+    def getName(self) :
         return self.name
 
     def getStatus(self) :
