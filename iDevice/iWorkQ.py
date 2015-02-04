@@ -1,4 +1,4 @@
-# This is workqueue for Thread pool
+# This is singletone workqueue for Thread pool
 # It's FIFO
 
 import threading
@@ -7,7 +7,8 @@ class iWorkQ :
     
     pool = ''
     POOL_MAX = 10
-    
+
+    # should be singleton
     def __init__(self, queue) :
         self.pool = queue
         self.mutex = threading.Lock()

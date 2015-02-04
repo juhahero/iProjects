@@ -2,20 +2,26 @@
 # Worker handles command capsuled using command pattern
 
 import threading
+import time
+from Light import *
 from LightOnCmd import *
 
-class Worker(threading.Thread) :
+
+class Work(threading.Thread) :
     def __init__(self, cmd) :
+        threading.Thread.__init__(self)
         self.cmd = cmd
 
     def run(self) :
         self.cmd.execute()
-        
+        time.sleep(1)
 
 '''    
 def test() :
-    LightOnCmd cmd = new LightOnCmd()
-    Worker work = new Worker(cmd)
+    light = Light()
+    cmd = LightOnCmd(light)
+    work = Work(cmd)
     work.start()
+
+test()
 '''
-    
