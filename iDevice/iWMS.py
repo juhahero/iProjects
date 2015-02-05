@@ -82,7 +82,7 @@ class iWMS :
         worker = self.getAvailableWorker()
         if worker != '' :
             worker.start()        
-
+'''
 def test() :
     
     list = []
@@ -101,6 +101,4 @@ def test() :
     wms.execute(work)
 
 test()
-        
-
-        
+'''
