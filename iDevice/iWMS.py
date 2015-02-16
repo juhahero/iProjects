@@ -8,10 +8,14 @@ from Light import *
 from LightOnCmd import *
 from Work import *
 from iWorkerThread import *
-
+from Singleton import *
+	
 class iWMS :
     # should be singleton
-    def __init__(self, wq, eList) :
+    def __init__(self) :
+        pass;
+        
+    def init(self, wq, eList) :
         self.wq = wq
         self.eList = eList
         self.WAITING = 0
@@ -83,6 +87,9 @@ class iWMS :
         if worker != '' :
             worker.start()        
 '''
+class AAA(Singleton, iWMS) :
+    pass
+    
 def test() :
     
     list = []
@@ -95,7 +102,9 @@ def test() :
     worker = iWorkerThread('test', wq)
 
     thList = []
-    wms = iWMS(wq, thList)
+    #wms = iWMS(wq, thList)
+    wms = AAA()
+    wms.init(wq, thList)
     wms.register(worker)
 
     wms.execute(work)
