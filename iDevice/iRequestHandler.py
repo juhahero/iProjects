@@ -13,6 +13,8 @@ from LightOnCmd import *
 from Work import *
 from iWMSInstance import *
 
+import serial
+
 PORT = 8000
 
 class iSOCKRequestHandler(StreamRequestHandler) :      
@@ -24,17 +26,20 @@ class iSOCKRequestHandler(StreamRequestHandler) :
             msg = conn.recv(1024)
             if not msg :
                 conn.close()
-                print self.client_address, 'disconnected'
+                print self.client_address, 'disconnected\n'
                 break;
 
             elif msg == 'ON' :
-                light = Light()
+                ser = serial.Serial("COM6", 9600)
+                ictrl = iControl(ser)
+                light = Light(ictrl)
                 cmd = LightOnCmd(light)
                 work = Work(cmd)
                 wms = iWMSInstance()
                 wms.execute(work)
 
             print self.client_address, msg
+            print '\n'
 
 class iHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler) :
     def do_GET(self) :

@@ -6,33 +6,35 @@ class iControl :
         self.ser = ser
         
     def setOnOff(self, cmd) :
-        ser.write(cmd)
+        print 'iControl:setOnOff() = %s' % cmd
+        self.ser.write(cmd)
         
     def isAvailable(self, cmd) :
-        ser.write(cmd)
+        self.ser.write(cmd)
         while True :
-            if ser.readline() == 'available' :
+            if self.ser.readline() == 'available' :
                 return True
             else :
                 return False
                 
     def getCurrentStatus(self) :
-        ser.write(cmd)
+        self.ser.write(cmd)
         while True :
-            result = ser.readline()
+            result = self.ser.readline()
             if result != '' :
                 print result
                 return
                 
     def readLine(self) : 
-        return ser.readline()
+        return self.ser.readline()
 
-'''         
+         
 def test() :
-    ser = serial.Serial("COM1", 9600)
+    #print serial.tools.list_ports.comports()
+    ser = serial.Serial("COM6", 9600)
     ictrl = iControl(ser)
     
     print ictrl.readLine()        
 
-test()
-'''
+#test()
+
