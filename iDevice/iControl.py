@@ -13,13 +13,14 @@ class iControl :
         while True :
             if ser.readline() == 'available' :
                 return True
-            else 
+            else :
                 return False
                 
     def getCurrentStatus(self) :
         ser.write(cmd)
         while True :
-            if (result = ser.readline()) != ''
+            result = ser.readline()
+            if result != '' :
                 print result
                 return
                 
@@ -29,7 +30,7 @@ class iControl :
 '''         
 def test() :
     ser = serial.Serial("COM1", 9600)
-    ictrl = new iControl(ser)
+    ictrl = iControl(ser)
     
     print ictrl.readLine()        
 
