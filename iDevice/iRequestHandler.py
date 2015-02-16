@@ -4,38 +4,14 @@
 import socket
 from SocketServer import ThreadingTCPServer, StreamRequestHandler
 
-class iRequestHandler(StreamRequestHandler) :      
-    def handle(self) :
-        print 'connection from', self.client_address
-        conn = self.request
-
-        while True :
-            msg = conn.recv(1024)
-            if not msg :
-                conn.close()
-                print self.client_address, 'disconnected'
-                break;
-
-            print self.client_address, msg
-
-'''
-def test() :
-    server = ThreadingTCPServer(('',8001), iRequestHandler)
-    print 'listening on port', 8001
-
-    server.serve_forever()
-
-test()
-'''
-# This is Request Handler extended StreamRequestHandler
-# referenced from 'www.FREELEC.co.kr'
-
-import socket
-from SocketServer import ThreadingTCPServer, StreamRequestHandler
-
 import BaseHTTPServer
 from CGIHTTPServer import CGIHTTPRequestHandler
 import time
+
+from Light import *
+from LightOnCmd import *
+from Work import *
+from iWMSInstance import *
 
 PORT = 8000
 
@@ -50,6 +26,13 @@ class iSOCKRequestHandler(StreamRequestHandler) :
                 conn.close()
                 print self.client_address, 'disconnected'
                 break;
+
+            elif msg == 'ON' :
+                light = Light()
+                cmd = LightOnCmd(light)
+                work = Work(cmd)
+                wms = iWMSInstance()
+                wms.execute(work)
 
             print self.client_address, msg
 
@@ -88,7 +71,7 @@ class iCGIRequestHandler(CGIHTTPRequestHandler) :
 # =================> TEST
 def SOCKTest() :
     try :
-        server = ThreadingTCPServer(('',PORT), iRequestHandler)
+        server = ThreadingTCPServer(('',PORT), iSOCKRequestHandler)
         print 'listening on port', PORT
     
         server.serve_forever()
@@ -116,6 +99,18 @@ def CGITest() :
     except KeyboardInterrupt :
         server.socket.close()
         print 'server closed'
+
+def WMS_init() :
+    list = []
+    wq = iWorkQ(list)
     
-CGITest()
+    worker = iWorkerThread('test', wq)
+    
+    thList = []
+    wms = iWMSInstance()
+    wms.init(wq, thList)
+    wms.register(worker)
+
+#WMS_init()
+#SOCKTest()
 
