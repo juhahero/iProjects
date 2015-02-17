@@ -1,3 +1,9 @@
+import sys
+sys.path.append("D:\projects\GitHub\iProjects\iDevice\WMS")
+sys.path.append("D:\projects\GitHub\iProjects\iDevice\Interface")
+sys.path.append("D:\projects\GitHub\iProjects\iDevice\Server")
+sys.path.append("D:\projects\GitHub\iProjects\iDevice\Light")
+
 from iWorkQ import *
 from Light import *
 from LightOnCmd import *
