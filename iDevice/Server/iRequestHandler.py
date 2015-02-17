@@ -8,10 +8,10 @@ import BaseHTTPServer
 from CGIHTTPServer import CGIHTTPRequestHandler
 import time
 
-from Light import *
-from LightOnCmd import *
-from Work import *
-from iWMSInstance import *
+from ..Light.Light import *
+from ..Light.LightOnCmd import *
+from ..WMS.Work import *
+from ..WMS.iWMSInstance import *
 
 import serial
 

@@ -3,8 +3,8 @@
 
 import threading
 import time
-from Light import *
-from LightOnCmd import *
+#from ..Light.Light import *
+#from ..Light.LightOnCmd import *
 
 
 class Work(threading.Thread) :

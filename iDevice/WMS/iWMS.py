@@ -3,13 +3,13 @@
 import threading
 import time
 
-from iWorkQ import *
-from Light import *
-from LightOnCmd import *
-from Work import *
-from iWorkerThread import *
-from Singleton import *
-	
+#from iWorkQ import *
+#from Work import *
+#from iWorkerThread import *
+#from ..Interface.Singleton import *
+#from ..Light.Light import *
+#from ..Light.LightOnCmd import *
+
 class iWMS :
     # should be singleton
     def __init__(self) :

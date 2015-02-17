@@ -1,7 +1,7 @@
 # This is LightCmd implemented Command
 
 from Light import *
-from Command import *
+from ..Interface.Command import *
 
 class LightOnCmd(Command) :
 

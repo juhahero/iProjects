@@ -1,1 +1,5 @@
-__all__ = ['iWMS', 'iWMSInstance', 'iWorkerThread', 'iWorkQ', 'Work']
+__all__ = ['iWMS',
+           'iWMSInstance',
+           'iWorkerThread',
+           'iWorkQ',
+           'Work']

@@ -4,9 +4,9 @@ import threading
 import time
 
 from iWorkQ import *
-from Light import *
-from LightOnCmd import *
 from Work import *
+#from ..Light.Light import *
+#from ..Light.LightOnCmd import *
 
 class iWorkerThread(threading.Thread) :
     def __init__(self, name, wq) :
