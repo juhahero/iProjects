@@ -13,7 +13,7 @@ class Producer(threading.Thread) :
         while(True) :
             #obj = random.randint(0, 256)
             obj = self.crawler.crawledData()
-            print "Producer : enqueue obj = %s\n" %obj
+            print ("Producer : enqueue obj = %s\n" %obj)
             self.pool.enqueue(obj)                
             
             time.sleep(10)

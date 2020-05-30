@@ -11,9 +11,9 @@ class iMonitor :
         for key, value in items :
             if(value >= self.MAX_THRESHOLD) :
                 over_threshold = "%s : %s over threshold\n" % (key, value)
-                print  '=================================================\n'
-                print  "%s" %over_threshold
-                print  '=================================================\n'
+                print  ('=================================================\n')
+                print  ("%s" %over_threshold)
+                print  ('=================================================\n')
                 return over_threshold
             else :
                 #print 'Not over'

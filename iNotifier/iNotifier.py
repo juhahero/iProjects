@@ -16,9 +16,9 @@ cmd_list = ['adb shell dumpsys cpuinfo',
 threshold_list = [90, 0, 100000, 1190400, 1005438]
 
 for idx, value in enumerate(menu_list) :
-        print "%d. %s" %(idx+1,value) 
+        print ("%d. %s" %(idx+1,value))
         
-menu = int(raw_input('Choose ReqEx.[1~6] : '))
+menu = int(input('Choose ReqEx.[1~6] : '))
            
 #main()******************************************
 def main() :

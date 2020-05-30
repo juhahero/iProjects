@@ -13,7 +13,7 @@ class Consumer(threading.Thread) :
     def run(self) :
         while(True) :
             job = self.pool.dequeue()
-            print "Consumer : dequeue job = %s\n" %job
+            print ("Consumer : dequeue job = %s\n" %job)
             self.worker.runJob(job)
             #self.worker.start()
             time.sleep(1)

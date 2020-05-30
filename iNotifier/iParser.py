@@ -26,24 +26,24 @@ class iParser :
         #->chosed parsing ReqEx.
         self.patt_choice = choice
         if (self.patt_choice == 1) :
-            print 'CputInfo : \s+(\d+\.?\d)\%\s+\d+\/([\w\.\/]+)\:\s+'
+            print ('CputInfo : \s+(\d+\.?\d)\%\s+\d+\/([\w\.\/]+)\:\s+')
             self.patt_info = '\s+(\d+\.?\d)\%\s+\d+\/([\w\.\/]+)\:\s+'
         elif (self.patt_choice == 2) :
-            print 'PowerWake : \s*(\w*WAKE_LOCK)\s+\'([\w\.\/]+)\'\s?[\w]*\s?\(uid=(\d+),\s+pid=(\d+)'
+            print ('PowerWake : \s*(\w*WAKE_LOCK)\s+\'([\w\.\/]+)\'\s?[\w]*\s?\(uid=(\d+),\s+pid=(\d+)')
             self.patt_info = '\s*(\w*WAKE_LOCK)\s+\'([\w\.\/]+)\'\s?[\w]*\s?\(uid=(\d+),\s+pid=(\d+)'
         elif (self.patt_choice == 3) :
-            print 'ProcRank : \s*(\d+)\s+(-?\d+)\s+(\d+)K?\s+(\d+)K?\s+(\d+)K?\s+(\d+)K?\s+(\d+)K?\s+([\w\.\/]+)'
+            print ('ProcRank : \s*(\d+)\s+(-?\d+)\s+(\d+)K?\s+(\d+)K?\s+(\d+)K?\s+(\d+)K?\s+(\d+)K?\s+([\w\.\/]+)')
             self.patt_info = '\s*(\d+)\s+(-?\d+)\s+(\d+)K?\s+(\d+)K?\s+(\d+)K?\s+(\d+)K?\s+(\d+)K?\s+([\w\.\/]+)'
         elif (self.patt_choice == 4) :
-            print 'CpuFreq. : \s*(\d+)'
+            print ('CpuFreq. : \s*(\d+)')
             self.patt_info = '\s*(\d+)'
         elif (self.patt_choice == 5) :
-            print 'GpuStat. : \s*(\d+)\s+(\d+)'
+            print ('GpuStat. : \s*(\d+)\s+(\d+)')
             self.patt_info = '\s*(\d+)\s+(\d+)'
             
         else:
             self.patt_info = ''
-            print self.patt_info
+            print (self.patt_info)
 
 
     def parse(self, obj):
@@ -58,7 +58,7 @@ class iParser :
             rs_data = data.rstrip()
             #print rs_data
             if bool(re.match(self.patt_start, rs_data)):
-                print rs_data       
+                print (rs_data)       
                               
                 
             elif bool(re.match(self.patt_time, rs_data)):

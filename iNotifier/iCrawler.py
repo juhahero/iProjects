@@ -20,7 +20,7 @@ class iCrawler :
         result = subprocess.Popen(self.cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT).stdout.read()
 
         output = "%s%s" %(date, result)
-        print "crawledData = %s" % output
+        print ("crawledData = %s" % output)
         data = output
         
         if data != '':

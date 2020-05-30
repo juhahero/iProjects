@@ -18,13 +18,13 @@ class iWorkQ :
 
         self.condition.acquire()
         while (self.size() >= self.POOL_MAX) :
-            print 'wait enqueue....\n'
+            print ('wait enqueue....\n')
             self.condition.wait()       
         
         self.pool.append(obj)
         
         if (self.size() > 0) :
-            print 'notify enqueue....\n'
+            print ('notify enqueue....\n')
             self.condition.notifyAll()
         self.condition.release()
         
@@ -34,13 +34,13 @@ class iWorkQ :
 
         self.condition.acquire()
         while (self.size() == 0) :
-            print 'wait dequeue....\n'
+            print ('wait dequeue....\n')
             self.condition.wait()
 
         
         obj = self.pool.pop(0)
         if (self.size() < self.POOL_MAX) :
-            print 'notify dequeue....\n'
+            print ('notify dequeue....\n')
             self.condition.notifyAll()
         self.condition.release()
         

@@ -20,13 +20,13 @@ class iWorker :
 
     def runJob(self, job) :
         self.parser.parse(job)
-        print self.db.Item_list.items()
+        print (self.db.Item_list.items())
         sCheck = self.monitor.checkThreshold(self.db.Item_list.items())
         if (sCheck) :
             try :
                 self.twit.sendDM(sCheck)
             except TweepError as e :
-                print "Exception : %s" % e.args[0]
+                print ("Exception : %s" % e.args[0])
         else :
             #self.twit.sendDM('NOT cpu overheat')
             pass            

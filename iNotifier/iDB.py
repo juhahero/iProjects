@@ -117,7 +117,7 @@ class iDB :
         self.Items_array = {}
 
     def dispItemList(self) :
-        print self.Item_list
+        print (self.Item_list)
 
     def dispItemsList(self) :
-        print self.Items_array
+        print (self.Items_array)
